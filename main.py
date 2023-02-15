@@ -44,7 +44,6 @@ else:
         print('You lose, stanger')
     if action.lower() == 'bet':
         c = cards[2]
-        #print(c.value)
         if c.value_true > a.value_true and c.value_true < b.value_true:
             print(str(a.value) + a.suit + ' ' + str(c.value) + c.suit + ' ' + str(b.value) + b.suit)
             print('You win... bigly')
