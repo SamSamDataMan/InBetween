@@ -26,7 +26,7 @@ b = cards[1]
 if a.value_true > b.value_true:
     a, b = b, a
 
-print(str(a.value) + a.suit + ' - ' + str(b.value) + b.suit)
+print(' - ' + str(a.value) + a.suit + ' - ' + str(b.value) + b.suit + ' - ')
 
 if a.value_true == b.value_true or b.value_true - a.value_true == 1:
     print('You lose, loser!')
@@ -45,11 +45,11 @@ else:
     if action.lower() == 'bet':
         c = cards[2]
         if c.value_true > a.value_true and c.value_true < b.value_true:
-            print(str(a.value) + a.suit + ' ' + str(c.value) + c.suit + ' ' + str(b.value) + b.suit)
+            print(' - ' + str(a.value) + a.suit + ' ' + str(c.value) + c.suit + ' ' + str(b.value) + b.suit + ' - ')
             print('You win... bigly')
         elif c.value_true <= a.value_true:
-            print(str(c.value) + c.suit + ' ' + str(a.value) + a.suit + ' - ' + str(b.value) + b.suit)
+            print(str(c.value) + c.suit + ' ' + str(a.value) + a.suit + ' - ' + str(b.value) + b.suit + ' - ')
             print("You shouldnt'a did that... he's just a boy")
         else:
-            print(str(a.value) + a.suit + ' - ' + str(b.value) + b.suit + ' ' + str(c.value) + c.suit + ' ')
+            print(' - ' + str(a.value) + a.suit + ' - ' + str(b.value) + b.suit + ' ' + str(c.value) + c.suit)
             print('Oops... sorry')
