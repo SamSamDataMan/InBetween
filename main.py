@@ -19,8 +19,12 @@ deck = Deck(cards)
 
 deck.shuffle(cards)
 
-a = cards[0]
-b = cards[1]
+print('test')
+for i in deck.cards[0:5]:
+    print(i.value)
+
+a = deck.deal()
+b = deck.deal()
 
 # swap so lowest card is first
 if a.value_true > b.value_true:
@@ -43,7 +47,7 @@ else:
     if action.lower() == 'fold':
         print('You lose, stanger')
     if action.lower() == 'bet':
-        c = cards[2]
+        c = deck.deal()
         if c.value_true > a.value_true and c.value_true < b.value_true:
             print(' - ' + str(a.value) + a.suit + ' ' + str(c.value) + c.suit + ' ' + str(b.value) + b.suit + ' - ')
             print('You win... bigly')

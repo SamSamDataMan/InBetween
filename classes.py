@@ -19,3 +19,8 @@ class Deck:
 
     def shuffle(self, cards):
         return random.shuffle(cards)
+
+    def deal(self):
+        dealt = self.cards[0]
+        self.cards = self.cards[1:]
+        return dealt
