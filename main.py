@@ -1,25 +1,6 @@
 import random
-
-######
-# Likely moving this block to its own file
-values = list(range(2, 15))
-suits = ['clubs', 'diamonds', 'hearts', 'spades']
-
-face_cards = {
-    11: 'J',
-    12: 'Q',
-    13: 'K',
-    14: 'A',
-    'J': 11,
-    'Q': 12,
-    'K': 13,
-    'A': 14
-}
-
-class Card:
-    def __init__(self, value, suit):
-        self.value = value
-        self.suit = suit
+from classes import Card, Deck
+from definitions import values, suits, face_cards
 
 def generate_cards(values, suits):
     cards = []
@@ -33,31 +14,21 @@ def generate_cards(values, suits):
     return cards
 
 cards = generate_cards(values, suits)
-############
 
-random.shuffle(cards)
+deck = Deck(cards)
 
-a = (cards[0].value, cards[0].suit)
-b = (cards[1].value, cards[1].suit)
+deck.shuffle(cards)
 
-# assign value to face cards
-if a[0] in face_cards:
-    a_temp = face_cards[a[0]]
-else:
-    a_temp = a[0]
-if b[0] in face_cards:
-    b_temp = face_cards[b[0]]
-else:
-    b_temp = b[0]
+a = cards[0]
+b = cards[1]
 
 # swap so lowest card is first
-if a_temp > b_temp:
-    a, a_temp, b, b_temp = b, b_temp, a, a_temp
+if a.value_true > b.value_true:
+    a, b = b, a
 
-print(a)
-print(b)
+print(str(a.value) + a.suit + ' - ' + str(b.value) + b.suit)
 
-if a_temp == b_temp or b_temp - a_temp == 1:
+if a.value_true == b.value_true or b.value_true - a.value_true == 1:
     print('You lose, loser!')
 else:
     action = input('Bet or Fold?')
@@ -72,13 +43,14 @@ else:
     if action.lower() == 'fold':
         print('You lose, stanger')
     if action.lower() == 'bet':
-        c = (cards[2].value, cards[2].suit)
-        print(c)
-        if c[0] in face_cards:
-            c_temp = face_cards[c[0]]
-        else:
-            c_temp = c[0]
-        if c_temp > a_temp and c_temp < b_temp:
+        c = cards[2]
+        #print(c.value)
+        if c.value_true > a.value_true and c.value_true < b.value_true:
+            print(str(a.value) + a.suit + ' ' + str(c.value) + c.suit + ' ' + str(b.value) + b.suit)
             print('You win... bigly')
-        else:
+        elif c.value_true <= a.value_true:
+            print(str(c.value) + c.suit + ' ' + str(a.value) + a.suit + ' - ' + str(b.value) + b.suit)
             print("You shouldnt'a did that... he's just a boy")
+        else:
+            print(str(a.value) + a.suit + ' - ' + str(b.value) + b.suit + ' ' + str(c.value) + c.suit + ' ')
+            print('Oops... sorry')
