@@ -19,10 +19,6 @@ deck = Deck(cards)
 
 deck.shuffle(cards)
 
-print('test')
-for i in deck.cards[0:5]:
-    print(i.value)
-
 a = deck.deal()
 b = deck.deal()
 
