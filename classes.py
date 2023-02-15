@@ -17,8 +17,8 @@ class Deck:
     def __init__(self, cards):
         self.cards = cards
 
-    def shuffle(self, cards):
-        return random.shuffle(cards)
+    def shuffle(self):
+        random.shuffle(self.cards)
 
     def deal(self):
         dealt = self.cards[0]

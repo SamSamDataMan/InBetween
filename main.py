@@ -17,7 +17,7 @@ cards = generate_cards(values, suits)
 
 deck = Deck(cards)
 
-deck.shuffle(cards)
+deck.shuffle()
 
 a = deck.deal()
 b = deck.deal()
