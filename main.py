@@ -1,17 +1,17 @@
 import random
-from classes import Card, Deck
+from classes import Deck
 
 deck = Deck()
 
-a = deck.deal() # deal first board card
-b = deck.deal() # deal second board card
+a = deck.deal()  # deal first board card
+b = deck.deal()  # deal second board card
 
-if a.value_true > b.value_true: # swap so lowest card is shown first
+if a.value_true > b.value_true:  # swap so lowest card is shown first
     a, b = b, a
 
-print(' - ' + str(a.value) + a.suit + ' - ' + str(b.value) + b.suit + ' - ') # print board
+print(' - ' + str(a.value) + a.suit + ' - ' + str(b.value) + b.suit + ' - ')  # print board
 
-if a.value_true == b.value_true or b.value_true - a.value_true == 1: # auto-lose conditions
+if a.value_true == b.value_true or b.value_true - a.value_true == 1:  # auto-lose conditions
     print('You lose, loser!')
 else:
     action = input('Bet or Fold?')
