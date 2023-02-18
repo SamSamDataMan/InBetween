@@ -1,34 +1,17 @@
 import random
 from classes import Card, Deck
-from definitions import values, suits, face_cards
 
-def generate_cards(values, suits):
-    cards = []
-    for suit in suits:
-        for value in values:
-            if value in face_cards:
-                card_value = face_cards[value]
-                cards.append(Card(card_value, suit))
-            else:
-                cards.append(Card(value, suit))
-    return cards
+deck = Deck()
 
-cards = generate_cards(values, suits)
+a = deck.deal() # deal first board card
+b = deck.deal() # deal second board card
 
-deck = Deck(cards)
-
-deck.shuffle()
-
-a = deck.deal()
-b = deck.deal()
-
-# swap so lowest card is first
-if a.value_true > b.value_true:
+if a.value_true > b.value_true: # swap so lowest card is shown first
     a, b = b, a
 
-print(' - ' + str(a.value) + a.suit + ' - ' + str(b.value) + b.suit + ' - ')
+print(' - ' + str(a.value) + a.suit + ' - ' + str(b.value) + b.suit + ' - ') # print board
 
-if a.value_true == b.value_true or b.value_true - a.value_true == 1:
+if a.value_true == b.value_true or b.value_true - a.value_true == 1: # auto-lose conditions
     print('You lose, loser!')
 else:
     action = input('Bet or Fold?')
