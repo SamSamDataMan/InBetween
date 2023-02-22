@@ -31,15 +31,36 @@ class Dealer:
     def __init__(self):
         pass
 
+    def swap_board(self, a, b):
+        if a.value_true > b.value_true:  # swap so lowest card is shown first
+            return b, a
+        else:
+            return a, b
+
+    def print_board(self, a, b):
+        print(' - ' + str(a.value) + a.suit + ' - ' + str(b.value) + b.suit + ' - ')  # print board
+        print('')  # print new line
+
+    def print_board_result(self, a, b, c):
+        if c.value_true > a.value_true and c.value_true < b.value_true:
+            print(' - ' + str(a.value) + a.suit + ' ' + str(c.value) + c.suit + ' ' + str(b.value) + b.suit + ' - ', '\n')
+            self.dialogue_winner()
+        elif c.value_true <= a.value_true:
+            print(str(c.value) + c.suit + ' ' + str(a.value) + a.suit + ' - ' + str(b.value) + b.suit + ' - ', '\n')
+            self.dialogue_loser()
+        else:
+            print(' - ' + str(a.value) + a.suit + ' - ' + str(b.value) + b.suit + ' ' + str(c.value) + c.suit, '\n')
+            self.dialogue_loser()
+
     def greeting(self):
         greeting = random.choice(['Changing $600!',
                                   'You don\'t know when to quit, do ya Griswold?',
                                   'Why don\'t you give me half the money your were gonna bet, then we\'ll go out back, I\'ll kick you in the nuts, and we\'ll call it a day!',
                                   'Big bet for a BIG man... Sure you don\'t want to save a few bucks for the buffet?',
                                   ])
+
         print('')
-        print(greeting)
-        print('')
+        print(greeting, '\n')
 
     def dialogue_winner(self):
         winner_message = random.choice(['18, 27, 35... dealer busts! Looks like you all win again!',
@@ -48,9 +69,7 @@ class Dealer:
                                         'You\'ve won, but at what cost?'
                                         ])
 
-        print('')
-        print(winner_message)
-        print('')
+        print(winner_message, '\n')
 
     def dialogue_loser(self):
         loser_message = random.choice(['You lose, stanger',
@@ -60,5 +79,4 @@ class Dealer:
                                        '... And it\'s gone!',
                                        ])
 
-        print(loser_message)
-        print('')
+        print(loser_message, '\n')
