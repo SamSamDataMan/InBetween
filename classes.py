@@ -5,13 +5,7 @@ class Card:
     def __init__(self, value, suit):
         self.value = value
         self.suit = suit
-
-        if value in face_cards:
-            value_true = face_cards[value]
-        else:
-            value_true = value
-
-        self.value_true = value_true
+        self.value_true = face_cards[value] if value in face_cards else value
 
 class Deck:
     def __init__(self):
