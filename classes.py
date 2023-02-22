@@ -5,22 +5,18 @@ class Card:
     def __init__(self, value, suit):
         self.value = value
         self.suit = suit
-        self.value_true = face_cards[value] if value in face_cards else value
+        self.value_true = face_cards.get(value, value)
 
 class Deck:
     def __init__(self):
-        self.cards = self.generate_cards(values, suits)
+        self.cards = self.generate_cards()
         self.shuffle()
 
-    def generate_cards(self, values, suits):
+    def generate_cards(self):
         cards = []
         for suit in suits:
             for value in values:
-                if value in face_cards:
-                    card_value = face_cards[value]
-                    cards.append(Card(card_value, suit))
-                else:
-                    cards.append(Card(value, suit))
+                cards.append(Card(face_cards.get(value, value), suit))
         return cards
 
     def shuffle(self):
