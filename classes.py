@@ -52,6 +52,14 @@ class Dealer:
             print(' - ' + str(a.value) + a.suit + ' - ' + str(b.value) + b.suit + ' ' + str(c.value) + c.suit, '\n')
             self.dialogue_loser()
 
+    def take_wagers(self):
+        action = input('Bet or Fold?\n')
+        print('')
+        while action.lower() not in ('bet', 'fold'):
+            print('Try again, dummy', '\n')
+            action = input('Bet or Fold?\n')
+        return action.lower()
+
     def greeting(self):
         greeting = random.choice(['Changing $600!',
                                   'You don\'t know when to quit, do ya Griswold?',

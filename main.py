@@ -16,13 +16,9 @@ dealer.print_board(a, b)
 if a.value_true == b.value_true or b.value_true - a.value_true == 1:  # auto-lose conditions
     dealer.dialogue_loser()
 else:
-    action = input('Bet or Fold?\n')
-    print('')
-    while action.lower() not in ('bet', 'fold'):
-        print('Try again, dummy', '\n')
-        action = input('Bet or Fold?\n')
-    if action.lower() == 'fold':
+    action = dealer.take_wagers()
+    if action == 'fold':
         dealer.dialogue_loser()
-    if action.lower() == 'bet':
+    if action == 'bet':
         c = deck.deal()
         dealer.print_board_result(a, b, c)
